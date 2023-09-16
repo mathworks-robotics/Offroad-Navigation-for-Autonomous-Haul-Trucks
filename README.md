@@ -1,7 +1,7 @@
 # Offroad Navigation for Autonomous Haul Trucks in Open Pit Mine
 <!-- This is the "Title of the contribution" that was approved during the Community Contribution Review Process --> 
 
-[![View <File Exchange Title> on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/####-file-exchange-title)  
+[![View Offroad-Navigation-for-Autonomous-Haul-Trucks on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/135472-offroad-navigation-for-autonomous-haul-trucks)
 <!-- Add this icon to the README if this repo also appears on File Exchange via the "Connect to GitHub" feature --> 
 
 Hauling material in an open pit mining requires a planning stack capable of both navigating at the global scale and avoiding obstacles during local path following. Navigation Toolbox&trade; offers planners and controllers that serve well for 2-D indoor planning but they can also be extended for 2.5-D offroad navigation. You can do this by deriving structure from terrain and incorporating heuristics into the planners to account for changes in elevation or slope. The solution proposed by this repository approaches the offroad navigation problem in three steps described in these three MLX files:
