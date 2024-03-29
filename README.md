@@ -4,7 +4,7 @@
 [![View Offroad-Navigation-for-Autonomous-Haul-Trucks on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/135472-offroad-navigation-for-autonomous-haul-trucks)
 <!-- Add this icon to the README if this repo also appears on File Exchange via the "Connect to GitHub" feature --> 
 
-Hauling material in an open pit mining requires a planning stack capable of both navigating at the global scale and avoiding obstacles during local path following. Navigation Toolbox&trade; offers planners and controllers that serve well for 2-D indoor planning but they can also be extended for 2.5-D offroad navigation. You can do this by deriving structure from terrain and incorporating heuristics into the planners to account for changes in elevation or slope. The solution proposed by this repository approaches the offroad navigation problem in three steps described in these three MLX files:
+Hauling material in an open pit mining requires a planning stack capable of both navigating at the global scale and avoiding obstacles during local path following. Navigation Toolbox&trade; offers planners and controllers that serve well for 2-D indoor planning but they can also be extended for 2.5-D offroad navigation. You can do this by deriving structure from terrain and incorporating heuristics into the planners to account for changes in elevation or slope. The solution proposed by this repository approaches the offroad navigation problem in multiple steps described in the following MLX files:
 
 1. [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=CreateRoutePlannerUsingDigitalElevationData.mlx) `CreateRoutePlannerUsingDigitalElevationData.mlx` — Process digital elevation data into a road network for route planning.  
 
@@ -16,16 +16,24 @@ Hauling material in an open pit mining requires a planning stack capable of both
 
 3. [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=CreateLocalPlannerToNavigateGlobalPath.mlx) `CreateLocalPlannerToNavigateGlobalPath.mlx` — Create a planner for following global reference paths while satisfying the kinematic and geometric constraints of the haul truck.  
 
-![Animation of truck using local planner](images/local_planner.gif)  
+![Animation of truck using local planner](images/local_planner.gif)
 
-Lastly, the repository has the [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=ModelAndControlAutonomousHaulTruck.mlx) `ModelAndControlAutonomousHaulTruck` MLX file. This file shows how to use Simulink&reg; to integrate the road network and planners into an autonomous navigation stack with logic controlled by Stateflow&reg;.  
+4. [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=CreatePathFollowingMPCController.mlx) `CreatePathFollowingMPCController.mlx` — Create an MPC-based controller for efficiently following a reference-path while minimizing drift.
+
+![Animation of truck using local planner](images/mpcPathFollower.gif)
+
+Lastly, the repository has the [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=ModelAndControlAutonomousHaulTruck.mlx) `ModelAndControlAutonomousHaulTruck` MLX file. This file shows how to use Simulink&reg; to integrate the road network and planners into an autonomous navigation stack with logic controlled by Stateflow&reg;. 
 
 This figure shows the top-level of the autonomous navigation stack.
 ![Autonomous navigation stack Simulink model containing Stateflow logic, the road network, and planners](images/navigation_stack.png)
 
+In R2024a, support for Unreal&reg; simulation was added:
+
+![Animation of truck using local planner](images/unrealDemo.gif)
+
 ### MathWorks Products (https://www.mathworks.com)
 
-Requires MATLAB release R2023b or newer
+Requires MATLAB release R2024a or newer
 - [MATLAB&reg;](https://www.mathworks.com/products/matlab.html)
 - [Simulink&reg;](https://www.mathworks.com/products/simulink.html)
 - [Navigation Toolbox&trade;](https://www.mathworks.com/products/navigation.html)
@@ -33,6 +41,9 @@ Requires MATLAB release R2023b or newer
 - [Image Processing Toolbox&trade;](https://www.mathworks.com/products/image.html)
 - [Automated Driving Toolbox&trade;](https://www.mathworks.com/products/automated-driving.html)
 - [Stateflow&reg;](https://www.mathworks.com/products/stateflow.html)
+- [Robotics System Toolbox&trade;](https://www.mathworks.com/products/robotics.html) (Optional)
+- [Simulink 3D Animation&trade;](https://www.mathworks.com/products/3d-animation.html) (Optional)
+- [Model Predictive Control Toolbox&trade;](https://www.mathworks.com/products/stateflow.html) (Optional)
 
 ## Installation
 Installation instuctions
@@ -48,7 +59,7 @@ The license is available in the license.txt file in this GitHub repository.
 ## Community Support
 [MATLAB Central](https://www.mathworks.com/matlabcentral)
 
-Copyright 2023 The MathWorks, Inc.
+Copyright 2023-2024 The MathWorks, Inc.
 
 <!--- Do not forget to the add the SECURITY.md to this repo --->
 <!--- Add Topics #Topics to your Repo such as #MATLAB  --->
