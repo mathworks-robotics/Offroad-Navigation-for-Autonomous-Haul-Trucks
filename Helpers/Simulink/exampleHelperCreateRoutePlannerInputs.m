@@ -11,6 +11,9 @@ res = binMap.Resolution;
 maxRefPathLen = 1e4;
 maxLocalPathLen = 1e3;
 
+% Set max edge length
+maxElementPerEdge = inf;
+
 % Convert grid coordinate pathList to local coordinates
 localPathList = pathList;
 for i = 1:numel(pathList)

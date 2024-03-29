@@ -31,3 +31,11 @@ codegen/
 
 # Cloud based storage dotfile
 .MATLABDriveTag
+
+# Bus/ROS-msg folders
+**/+bus_conv_fcns/*
+**/*_msg/*
+**/*_msg_gen/*
+**/*.slx.original
+**/*.msg
+**/*.srv

@@ -1,0 +1,36 @@
+% Generate test inputs
+exampleHelperCreateBehaviorModelInputs
+gridSz = 1201;
+obsSz = 10;
+refPath = zeros(maxRefPathLen,3);
+n = 100;
+pts = [repmat(linspace(0,1000,n)',1,2) repelem(pi/4,n,1)];
+refPath(1:n,:) = pts;
+start = [267.5 441.5 -pi/2];
+goal  = [479.5  210.5 pi/2];
+gridSize = [1201 1201];
+gridLoc = [0 0];
+
+% Configure service messages
+matType = coder.typeof(int8(0),[1201 1201],[1 1]);
+refPathType = coder.typeof(0,[1000 3],[1 0]);
+velcmdType = coder.typeof(0,[1000 2],[1 0]);
+tstampType = coder.typeof(0,[1000 1],[1 0]);
+inMsg = coder.typeof(struct(...
+    'CurPose',start,...
+    'WorldMat',matType,...
+    'WorldResolution',res, ...
+    'WorldGridLoc',[0 0], ...
+    'MaxVelocity',0, ...
+    'LookaheadTime',0))
+outMsg = coder.typeof(struct(...
+    'EgoMat',matType, ...
+    'EgoRes',0, ...
+    'EgoGridSize',[0 0], ...
+    'GridLoc',[0 0]));
+
+% Generate service and all required message types
+sType = [inMsg outMsg];
+msgDir = fullfile(matlab.project.rootProject().RootFolder,'ROSHelper');
+ros2msgfromstruct(sType,Folder=msgDir,PkgName="offroad_msg",...
+    Name="ExtractLocalMap",Type="srv");

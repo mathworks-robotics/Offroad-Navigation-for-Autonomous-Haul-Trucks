@@ -18,7 +18,7 @@ function [length, width, turnRadius, maxFV, maxRV, maxW] = exampleHelperMiningTr
     length = 6.5;
 
     % Width of mining truck (in meters)
-    width = 5.76;
+    width = 3;
 
     % Minimum turning radius for the mining truck (meters)
     turnRadius = 17.2;

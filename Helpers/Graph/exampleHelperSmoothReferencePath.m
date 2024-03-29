@@ -1,5 +1,5 @@
-function resampledPath = exampleHelperSmoothPath(path,step)
-%exampleHelperSmoothPath Attempts to smooth the path by fitting a cubic polynomial
+function resampledPath = exampleHelperSmoothReferencePath(path,step)
+%exampleHelperSmoothReferencePath Attempts to smooth the path by fitting a cubic polynomial
 % Fits a cubic polynomial through every third point along a path. 
 % Path is then resampled and with orientation computed via 
 % finite-differencing. This provides the TEB controller with a 

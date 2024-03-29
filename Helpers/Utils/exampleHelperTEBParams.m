@@ -8,7 +8,7 @@ function [tuneableTEBParams,fixedTEBParams] = exampleHelperTEBParams
 
     tuneableTEBParams = struct();
     tuneableTEBParams.LookaheadTime = 6; % 6
-    tuneableTEBParams.ObstacleSafetyMargin = 1;% collisionChecker.InflationRadius;
+    tuneableTEBParams.ObstacleSafetyMargin = 1;
     tuneableTEBParams.CostWeights.Time = 100; %100
     tuneableTEBParams.CostWeights.Smoothness = 500; %500
     tuneableTEBParams.CostWeights.Obstacle = 10; %50
@@ -20,7 +20,7 @@ function [tuneableTEBParams,fixedTEBParams] = exampleHelperTEBParams
     fixedTEBParams = struct();
     fixedTEBParams.Length = length;
     fixedTEBParams.Width = width;
-    fixedTEBParams.NumIteration = 3;
+    fixedTEBParams.NumIteration = 1;
     fixedTEBParams.ReferenceDeltaTime = 0.2;
     fixedTEBParams.RobotInformation = robotInfo;
 end
