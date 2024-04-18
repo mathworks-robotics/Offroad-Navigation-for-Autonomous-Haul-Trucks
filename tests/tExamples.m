@@ -9,6 +9,20 @@ classdef tExamples < matlab.unittest.TestCase
             tempFolder = testCase.applyFixture(TemporaryFolderFixture);
             testCase.applyFixture(CurrentFolderFixture(tempFolder.Folder));
         end
+
+        function ignoreWarning(testCase)
+            import matlab.unittest.fixtures.SuppressedWarningsFixture
+
+            % Ignore expected warnings
+            testCase.applyFixture(...
+                SuppressedWarningsFixture('vision:pointcloud:HGMACIssue'));
+            testCase.applyFixture(...
+                SuppressedWarningsFixture('MPC:nlmpcMultistage:warnJacError2D'));
+            testCase.applyFixture(...
+                SuppressedWarningsFixture('SystemBlock:MATLABSystem:ParameterCannotBeTunable'));
+            testCase.applyFixture(...
+                SuppressedWarningsFixture('SL_SERVICES:utils:MemoryAllocationError'));
+        end
     end
 
     methods (Test)
