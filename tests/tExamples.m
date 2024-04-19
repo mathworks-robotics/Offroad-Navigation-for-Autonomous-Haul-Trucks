@@ -52,6 +52,10 @@ classdef tExamples < matlab.unittest.TestCase
             % export also can run the MLX
             testCase.verifyWarningFree(@()export('ModelAndControlAutonomousHaulTruck.mlx',Format='m',Run=true));
             testCase.log(1,'Completed running ModelAndControlAutonomousHaulTruck');
+            
+            % Add teardown
+            testCase.addTeardown(@()bdclose('all')); % For simulink model
+            testCase.addTeardown(@()close('all')); % For the figures
         end
     end
 end
