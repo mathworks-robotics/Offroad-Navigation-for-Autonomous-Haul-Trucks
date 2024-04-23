@@ -17,7 +17,7 @@ classdef texampleHelperEvenlyInterpSegment < matlab.unittest.TestCase
             radius = 15;
             xy_r = circr(radius,r_angl);
             circPath = xy_r';            
-            heading = pi/2 + r_angl';
+            heading = r_angl' - pi/2;
 
             % View the ref path created and the heading angle as needed
             if viewPlot
@@ -48,7 +48,7 @@ classdef texampleHelperEvenlyInterpSegment < matlab.unittest.TestCase
             r_angl = linspace(2*pi-6, 2*pi, 200);
             xy_r = circr(radius,r_angl);
             circPath = xy_r';
-            heading = pi/2 + r_angl';
+            heading = r_angl' - pi/2;
             inPath2 = [circPath, heading];
 
             % Call the function with new set of inputs
@@ -59,7 +59,7 @@ classdef texampleHelperEvenlyInterpSegment < matlab.unittest.TestCase
 
             % Create a new segment from the end of circular path created
             newSeg_y = linspace(circPath(end,2), circPath(end,2)- 90, N);
-            newSeg = [zeros(N,1)+circPath(end,1), newSeg_y',zeros(N,1)-pi/2];
+            newSeg = [zeros(N,1)+circPath(end,1), newSeg_y', zeros(N,1)+ inPath(end, 3)];
 
             % Connect the new segment created with the circular path and
             % call the helper function to genrate the evenly separated
@@ -68,7 +68,7 @@ classdef texampleHelperEvenlyInterpSegment < matlab.unittest.TestCase
             interPath3 = exampleHelperEvenlyInterpSegment(refPath, 1,1);
 
             % Verify the refPath and interpolated points
-            testCase.verifyEqual(refPath(:,1:2), interPath3(:,1:2), 'AbsTol',sqrt(eps));
+            testCase.verifyEqual(refPath, interPath3, 'AbsTol',sqrt(eps));
         end
     end
 end

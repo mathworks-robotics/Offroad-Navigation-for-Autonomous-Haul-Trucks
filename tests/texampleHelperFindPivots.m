@@ -49,6 +49,9 @@ classdef texampleHelperFindPivots < matlab.unittest.TestCase
         % effect and verifies if the number of segments is returned as
         % expected
 
+            % Set the default ang threshold to use in test
+            angThreshold = pi/16;
+
             % Set viewPlot to true to plot the refPath used in this test
             viewPlot = false;
 
@@ -71,8 +74,8 @@ classdef texampleHelperFindPivots < matlab.unittest.TestCase
             % the circular path to have success and failure cases
             refPath1 = [circPath(1:end,:); newSeg(2:end,:)];
             refPath2 = [circPath(1:end-7,:); newSeg(2:end,:)];
-            [~,pivotIdx1,nSeg1] = exampleHelperFindPivots(refPath1); %#ok<ASGLU>
-            [~,pivotIdx2,nSeg2] = exampleHelperFindPivots(refPath2); %#ok<ASGLU>
+            [~,pivotIdx1,nSeg1] = exampleHelperFindPivots(refPath1,angThreshold); %#ok<ASGLU>
+            [~,pivotIdx2,nSeg2] = exampleHelperFindPivots(refPath2,angThreshold); %#ok<ASGLU>
             
             % viewPlot Plots the reference path depending on the value set
             if viewPlot
