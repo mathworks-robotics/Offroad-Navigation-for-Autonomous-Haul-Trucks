@@ -2,7 +2,8 @@ function [velcmds,timestamps,optpath,nearestIdx,info,needLocalReplan,needFreeSpa
     mat,res,gridLoc,refPathXY,lastIdx,curpose,curvel,tuneableTEBParams,length, width, numIteration, referenceDeltaTime)
 %TEBControllerFcn Wrapper of persistent controllerTEB planner
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
     persistent adjustedPath
 
     if isempty(adjustedPath)

@@ -1,7 +1,8 @@
 function exampleHelperOverlayPathImage(imgHandle,pathList,corder,nv)
 %exampleHelperOverlayPathImage Overlay struct-array of pixel-based paths atop a black-and-white image
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         imgHandle (:,:) {mustBeA(imgHandle,{'matlab.graphics.primitive.Image'})}
@@ -38,8 +39,8 @@ function exampleHelperOverlayPathImage(imgHandle,pathList,corder,nv)
     hs = ishold; hold(ax,"on");
     if isXYPath
         mask = rot90(flipud(mask));
-    end
-    hNew = imagesc(mask,Parent=ax);
+    end    
+    hNew = image(CData=mask,Parent=ax);
     hNew.AlphaData = 0.9*any(mask,3);
     
     if ~hs

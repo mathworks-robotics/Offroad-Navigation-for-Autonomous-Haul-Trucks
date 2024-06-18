@@ -1,24 +1,27 @@
-function [length, width, turnRadius, maxFV, maxRV, maxW] = exampleHelperMiningTruckSpecs
-%exampleHelperMiningTruckSpecs Generate default parameters for an industrial mining vehicle
+function [length, width, turnRadius, maxFV, maxRV, maxW, maxLA] = exampleHelperMiningTruckSpecs
+%exampleHelperMiningTruckSpecs Generate default parameters for an
+%industrial haul truck
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     % turnRadius = 17.2;
     % width = 5.76; (rear-track width)
     % length/ wheelbase: 6.5 m
     % Max speed: 36 mph (16 m/s)
 
-    % Max accel
-    % https://www.sciencedirect.com/science/article/pii/S204604301630034X#:~:text=Statistics%20results%20indicate%20that%20on,mph%20in%20500%20feet%2C%20respectively.
+    % Max linear accel [1]
     % 30 mph = 13.4 m/s
     % 500 ft = 152 meters
-    % max accel = (13.4 - 0)/(152/(13.4/2)) % [v2 - v1]/(d/avg(v)) ~ 0.6 m/s/s
+    % max linear accel = (13.4 - 0)/(152/(13.4/2)) % [v2 - v1]/(d/avg(v)) ~ 0.6 m/s/s
+    % [1] Yang, Guangchuan, Hao Xu, Zhongren Wang, and Zong Tian. “Truck Acceleration Behavior Study and Acceleration Lane Length Recommendations for Metered On-Ramps.” International Journal of Transportation Science and Technology 5, no. 2 (October 2016): 93–102. https://doi.org/10.1016/j.ijtst.2016.09.006.
+    maxLA = round((13.4 - 0)/(152/(13.4/2)),1);
 
     % Length of mining truck (in meters)
     length = 6.5;
 
     % Width of mining truck (in meters)
-    width = 3;
+    width = 5.76;
 
     % Minimum turning radius for the mining truck (meters)
     turnRadius = 17.2;

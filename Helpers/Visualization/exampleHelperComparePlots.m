@@ -1,7 +1,8 @@
 function h = exampleHelperComparePlots(f,varargin)
 %exampleHelperComparePlots Display multiple images on the same figure
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         f (1,1) {mustBeA(f,'matlab.ui.Figure')}

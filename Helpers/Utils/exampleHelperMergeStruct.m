@@ -19,7 +19,7 @@ function sOut = exampleHelperMergeStruct(varargin)
 %
 %       assert(isequal(xyzList_A,xyzList_B));
 
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
 %#codegen
     arguments (Repeating)

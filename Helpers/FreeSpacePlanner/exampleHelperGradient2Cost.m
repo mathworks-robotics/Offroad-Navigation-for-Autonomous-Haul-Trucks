@@ -1,5 +1,8 @@
 function costValues = exampleHelperGradient2Cost(maxSlope, gradientValues)
 %exampleHelperGradient2Cost Converts slope values to cost
+%
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     validateattributes(maxSlope,{'numeric'},{'scalar','positive','finite'});
     

@@ -1,7 +1,8 @@
 function [tuneablePlannerParams,nonTuneablePlannerParams] = exampleHelperTerrainPlannerParams
 %exampleHelperTerrainPlannerParams Generate default values for a parameterized plannerHybridAStar 
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     [length, width, turnRadius] = exampleHelperMiningTruckSpecs;
 

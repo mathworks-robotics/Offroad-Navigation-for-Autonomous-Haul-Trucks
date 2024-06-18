@@ -18,9 +18,9 @@ worldMat = binMap.occupancyMatrix;
 [tuneableTEBParams,fixedTEBParams] = exampleHelperTEBParams;
  maxDistance = (tuneableTEBParams.MaxVelocity(1)*tuneableTEBParams.LookaheadTime/binMap.Resolution);
 
-% Create the ego-centric local map
-localMap = binaryOccupancyMap(2*maxDistance,2*maxDistance,binMap.Resolution);
-localMap.GridOriginInLocal = -localMap.GridSize/(2*localMap.Resolution);
-localMat = localMap.occupancyMatrix;
+% % Create the ego-centric local map
+ localMap = binaryOccupancyMap(2*maxDistance,2*maxDistance,binMap.Resolution);
+ localMap.GridOriginInLocal = -localMap.GridSize/(2*localMap.Resolution);
+ localMat = localMap.occupancyMatrix;
 
 % Copyright 2023 The MathWorks, Inc.

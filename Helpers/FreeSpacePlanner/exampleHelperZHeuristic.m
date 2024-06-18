@@ -1,7 +1,8 @@
 function cost = exampleHelperZHeuristic(motionSegment, costMap,weight)
 %exampleHelperZHeuristic Ignore gradients, include height in cost
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     states = nav.algs.hybridAStar.motionPrimitivesInterpolate(motionSegment, 1); 
 

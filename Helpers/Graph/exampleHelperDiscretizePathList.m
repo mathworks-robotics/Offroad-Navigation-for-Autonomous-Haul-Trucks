@@ -1,7 +1,7 @@
 function pathList = exampleHelperDiscretizePathList(pathListIn,edgeSize)
 %exampleHelperDiscretizePathList Subdivide incoming edges given max edge size
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
     if ~isinf(edgeSize)
         mustBeInteger(edgeSize);

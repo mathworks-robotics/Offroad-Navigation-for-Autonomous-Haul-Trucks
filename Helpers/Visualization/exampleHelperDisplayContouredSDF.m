@@ -1,7 +1,8 @@
 function [hSDF,hContour] = exampleHelperDisplayContouredSDF(sdf,minDist)
 %exampleHelperDisplayContouredSDF Displays the colormap with shaded offlimit regions
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     [~,hSDF] = sdf.show(BoundaryColor=[0 0 0],Colorbar="on");
     [~,hContour] = contourf(-flipud(sdf.distance),[-minDist inf],FaceColor='r',FaceAlpha=0.5);

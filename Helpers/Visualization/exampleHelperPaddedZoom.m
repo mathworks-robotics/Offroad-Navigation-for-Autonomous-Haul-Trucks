@@ -7,7 +7,8 @@ function exampleHelperPaddedZoom(data,nDim,nv)
 % provided which returns the matrix in each element, and all values
 % will be considered when computing bounds.
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         data

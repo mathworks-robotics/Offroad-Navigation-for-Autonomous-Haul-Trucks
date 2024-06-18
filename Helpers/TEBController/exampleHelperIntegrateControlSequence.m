@@ -2,7 +2,8 @@ function optPath = exampleHelperIntegrateControlSequence(initPose,velcmds,timest
 %exampleHelperIntegrateControlSequence Generates the optimal path from time-stamped
 %velocity commands at the specified integration step-size
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     curpose = initPose;
     t = 0;

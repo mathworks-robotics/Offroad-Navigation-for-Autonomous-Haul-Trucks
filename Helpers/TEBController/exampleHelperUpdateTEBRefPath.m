@@ -2,7 +2,8 @@ function exampleHelperUpdateTEBRefPath(teb,curpose,visualizeExcludedPts)
 %exampleHelperUpdateTEBRefPath Attempts to fix the reference path by eliminating
 %points that are kinematically unreachable
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     if nargin == 2
         visualizeExcludedPts = false;

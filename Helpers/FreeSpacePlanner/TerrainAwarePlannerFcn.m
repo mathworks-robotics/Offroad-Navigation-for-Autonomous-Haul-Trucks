@@ -1,7 +1,8 @@
-function se2Path = TerrainAwarePlannerFcn(start,goal,dem,gridLoc,tuneableParams,fixedParams)
+function se2Path = TerrainAwarePlannerFcn(start,goal,dem,gridLoc,tuneableParams,fixedParams,nv)
 %TerrainAwarePlannerFcn Wrapper of terrain informed plannerHybridAStar
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         start (:,3) double
@@ -10,6 +11,7 @@ function se2Path = TerrainAwarePlannerFcn(start,goal,dem,gridLoc,tuneableParams,
         gridLoc (1,2) double
         tuneableParams
         fixedParams
+        nv.maxSize (1,1) {mustBeNumeric} = 1000
     end
     persistent costMap prevDEM prevGridLoc prevMaxAngle
 
@@ -49,7 +51,7 @@ function se2Path = TerrainAwarePlannerFcn(start,goal,dem,gridLoc,tuneableParams,
 
     % Plan a path
     pathObj = planner.plan(start,goal);
-    pathObj.interpolate(max(1000,pathObj.NumStates));
+    pathObj.interpolate(max(nv.maxSize,pathObj.NumStates));
     se2Path = pathObj.States;
 end
 

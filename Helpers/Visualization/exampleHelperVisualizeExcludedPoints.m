@@ -1,7 +1,8 @@
 function exampleHelperVisualizeExcludedPoints(remainingPath,badPts,curpose,radius)
 %exampleHelperVisualizeExcludedPoints Visualize points found inside vehicle's radius of curvature
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     h1 = exampleHelperPlotLines(remainingPath(badPts(:),:),'-x');
     h2 = exampleHelperPlotLines(remainingPath(~badPts(:),:),'-x');

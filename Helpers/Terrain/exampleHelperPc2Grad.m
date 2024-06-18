@@ -1,7 +1,8 @@
 function [dzdx,dzdy,dem,xlim,ylim,xx,yy] = exampleHelperPc2Grad(ptCloud,res)
 %exampleHelperPc2Grad Computes DEM and gradient info from pointcloud
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     % Convert pointcloud to dem
     [demInit,xlim,ylim] = pc2dem(ptCloud,1/res);

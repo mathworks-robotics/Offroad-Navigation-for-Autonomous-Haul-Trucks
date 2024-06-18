@@ -1,7 +1,8 @@
 function geomObj = exampleHelperVehicleGeometry(length,width,outputFormat,nv)
 %exampleHelperVehicleGeometry Generates geometry info for vehicleCostmap and controllerTEB
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         length (1,1) double {mustBePositive, mustBeFinite}

@@ -1,7 +1,8 @@
 function exampleHelperVisualizeTerrainPlanner(states,costMap,fixedParams,tuneableParams)
 %exampleHelperVisualizeTerrainPlanner Animate global trajectory
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     %% Visualize solution
     exampleHelperPlotLines(states,{'LineWidth',5});
@@ -18,7 +19,8 @@ function exampleHelperVisualizeTerrainPlanner(states,costMap,fixedParams,tuneabl
     hGradCost = imagesc(flipud(gradMagnitude));
     hGradCost.AlphaData = 0.3;
     colormap parula;
-    colorbar
+    c = colorbar;    
+    c.Label.String = 'Terrain Slope Gradient';
 
     %% Visualize collisionChecker following path
     vehDims = exampleHelperVehicleGeometry(fixedParams.Length,fixedParams.Width,"collisionChecker");

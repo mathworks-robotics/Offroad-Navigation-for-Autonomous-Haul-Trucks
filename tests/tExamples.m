@@ -1,5 +1,7 @@
 classdef tExamples < matlab.unittest.TestCase
-
+    %tExamples - Unit tests to check if export also can run the MLX
+    %
+    % Copyright 2023 The MathWorks, Inc.
     methods (TestClassSetup)
         function setupTempDir(testCase)
 

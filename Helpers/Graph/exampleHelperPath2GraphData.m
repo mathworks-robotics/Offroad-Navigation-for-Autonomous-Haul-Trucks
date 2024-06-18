@@ -1,7 +1,7 @@
 function [uniqueStates,links,edge2pathIdx,cachedPaths] = exampleHelperPath2GraphData(pathListIn,edgeSize,visualize)
 %exampleHelperPath2GraphData Converts struct-array of xy edges to a set of unique nodes and link
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         pathListIn

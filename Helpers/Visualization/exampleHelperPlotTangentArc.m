@@ -1,7 +1,8 @@
 function [h,xCtr] = exampleHelperPlotTangentArc(pose,R,dTh,spec)
 %exampleHelperPlotTangentArc Plot arc tangent to a given pose with signed radius
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     if nargin ~= 4
         spec = {'--'};
