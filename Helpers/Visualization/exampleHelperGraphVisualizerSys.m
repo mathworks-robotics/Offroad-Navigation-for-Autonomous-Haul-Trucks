@@ -2,7 +2,7 @@ classdef exampleHelperGraphVisualizerSys < exampleHelperVisualizerBaseSys
 %exampleHelperGraphVisualizerSys System object for visualizing navGraph in Simulink
 
     % Public, tunable properties
-    properties
+    properties (Nontunable)
         %Node Color
         NodeColor (1,1) string = 'r';
 
@@ -71,7 +71,7 @@ classdef exampleHelperGraphVisualizerSys < exampleHelperVisualizerBaseSys
             % Display Road Network
             netLine = arrayfun(@(x)[x.Path; nan(1,size(x.Path,2))],pathList,UniformOutput=false);
             hNetwork = {exampleHelperVisualizePath(vertcat(netLine{:}),{"Color",obj.NetworkColor, ...
-                "LineStyle",obj.LineStyle,obj.NetworkSpec{:}},hNetwork,Type="Line")}; %#ok<CCAT>
+                "LineStyle",obj.LineStyle,obj.NetworkSpec{:}},hNetwork,Type="Line")};
             set(hNetwork{:},Color=[hNetwork{1}.Color obj.NetworkAlpha]);
             h = [hGraph{:};hNetwork{:}];
         end
