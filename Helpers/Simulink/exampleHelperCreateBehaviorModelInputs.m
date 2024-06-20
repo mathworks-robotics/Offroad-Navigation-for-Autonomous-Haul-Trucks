@@ -33,4 +33,7 @@ mapSize = mapHeight.GridSize([2 1])/mapHeight.Resolution;
 vssPhysModel = "Simple";
 vssCommProtocol = "SLSignals";
 
+% Clear "start" to not conflict with simulation command
+clear start;
+
 % Copyright 2023 The MathWorks, Inc.
