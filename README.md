@@ -4,7 +4,7 @@
 [![View Offroad-Navigation-for-Autonomous-Haul-Trucks on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/135472-offroad-navigation-for-autonomous-haul-trucks)
 <!-- Add this icon to the README if this repo also appears on File Exchange via the "Connect to GitHub" feature --> 
 
-Hauling material in an open pit mining requires a planning stack capable of both navigating at the global scale and avoiding obstacles during local path following. Navigation Toolbox&trade; offers planners and controllers that serve well for 2-D indoor planning but they can also be extended for 2.5-D offroad navigation. You can do this by deriving structure from terrain and incorporating heuristics into the planners to account for changes in elevation or slope. The solution proposed by this repository approaches the offroad navigation problem in multiple steps described in the following MLX files:
+Hauling material in an open pit mine requires a planning stack capable of both navigating at the global scale and avoiding obstacles during local path following. Navigation Toolbox&trade; offers planners and controllers that serve well for 2-D indoor planning, but they can also be extended for 2.5-D offroad navigation. You can do this by deriving structure from terrain and incorporating heuristics into the planners to account for changes in elevation or slope. The solution proposed by this repository approaches the offroad navigation problem in multiple steps described in the following MLX files:
 
 1. [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks-robotics/Offroad-Navigation-for-Autonomous-Haul-Trucks&project=AutonomousHaulTruck.prj&file=CreateRoutePlannerUsingDigitalElevationData.mlx) `CreateRoutePlannerUsingDigitalElevationData.mlx` — Process digital elevation data into a road network for route planning.  
 
@@ -33,7 +33,7 @@ In R2024a, support for Unreal&reg; simulation was added:
 
 ### MathWorks Products (https://www.mathworks.com)
 
-Requires MATLAB release R2024a or newer
+Requires MATLAB release R2024b or newer
 - [MATLAB&reg;](https://www.mathworks.com/products/matlab.html)
 - [Simulink&reg;](https://www.mathworks.com/products/simulink.html)
 - [Navigation Toolbox&trade;](https://www.mathworks.com/products/navigation.html)
@@ -46,7 +46,7 @@ Requires MATLAB release R2024a or newer
 - [Model Predictive Control Toolbox&trade;](https://www.mathworks.com/products/stateflow.html) (Optional)
 
 ## Installation
-Installation instuctions
+Installation instructions
 
 1. MATLAB installation: Visit installation instructions [webpage](https://in.mathworks.com/help/install/) to get started with the MATLAB installation process. 
 2. Ensure that the products mentioned under MathWorks Products above are installed.
