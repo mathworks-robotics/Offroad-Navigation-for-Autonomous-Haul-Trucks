@@ -29,7 +29,7 @@ function exampleHelperVisualizeTerrainPlanner(states,costMap,fixedParams,tuneabl
     hT = hgtransform;
     arrayfun(@(x)set(x,"Parent",hT),hVeh);
 
-    exampleHelperPaddedZoom(states,2,"PaddingFactor",3);
+    exampleHelperPaddedZoom(states,2,"PaddingFactor",5);
 
     for i = 1:size(states,1)
         hT.Matrix(1:3,:) = [eul2rotm([0 0 states(i,3)],'XYZ') [states(i,1:2)';0]];
