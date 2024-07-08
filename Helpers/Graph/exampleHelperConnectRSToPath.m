@@ -26,6 +26,7 @@ function [onrampPath,onrampIdx] = exampleHelperConnectRSToPath(path, localEdges,
     [minDist,idx] = sort(dists,'descend');
 
     onrampPath = zeros(0,2);
+    onrampIdx = 1;
 
     % collision checker for vehicle
     collisionChecker = inflationCollisionChecker(vehDims,3);
@@ -72,7 +73,7 @@ function [onrampIdx,onrampPath] = findNearestFreeConnection(offNetworkState,iSor
 %   edge until collision-free path is found, or points exhausted.
 
     % Choose the first point with a clear line-of-sight to the path
-    onrampIdx = nan;
+    onrampIdx = 1;
     onrampPath = zeros(0,2);
     halfCellSize = 1/(2*sdf.Resolution);
     states = exampleHelperSmoothReferencePath(path);
