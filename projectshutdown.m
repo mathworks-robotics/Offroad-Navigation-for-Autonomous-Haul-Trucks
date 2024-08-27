@@ -3,5 +3,5 @@ function projectshutdown
 rmpath(genpath('Helpers'));
 rmpath(genpath('images'));
 rmpath(genpath('SimModels'));
-disp('project files removed from path.');
+%disp('project files removed from path.');
 end

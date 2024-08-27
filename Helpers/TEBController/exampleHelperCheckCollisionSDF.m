@@ -1,5 +1,8 @@
 function [stateFree,dist] = exampleHelperCheckCollisionSDF(sdf,capPts,radius,curpath)
 %exampleHelperCheckCollisionSDF Use signed distance to check for collision along path
+%
+
+% Copyright 2023-2024 The MathWorks, Inc.
     
     if size(curpath,2) == 3
         nCapPt = size(capPts,1);

@@ -1,7 +1,8 @@
 function quiverHandle = exampleHelperPose2Quiver(poses,spec,nvPair)
 %exampleHelperPose2Quiver Display Nx3 SE2 array as quiver
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         poses (:,:) double {validatePoses(poses)}

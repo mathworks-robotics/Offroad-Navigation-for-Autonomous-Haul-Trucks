@@ -8,7 +8,8 @@ function lineHandle = exampleHelperPlotLines(varargin)%(s1,s2,s3,s4,s5)
 %   (<___>, <data2 spec2 spec12>)   % Interlines and 2nd line plotted with specs
 %   (<___>, <___>, -repeat)         % Second set can repeat/daisy-chain
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     n = nargin;
 

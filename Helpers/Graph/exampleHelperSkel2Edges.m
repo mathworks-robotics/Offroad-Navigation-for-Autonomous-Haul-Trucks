@@ -1,7 +1,7 @@
 function [pathList,modifiedImage] = exampleHelperSkel2Edges(bwskel,nv)
 %exampleHelperSkel2Edges Computes the nodes and edge list from a skeletonized image
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         bwskel (:,:) {mustBeNumericOrLogical}

@@ -18,7 +18,7 @@ function projectstartup
     addFcn(genpath(fullfile(prjDir,'SimModels')));
     addFcn(genpath(fullfile(prjDir,'ROSHelper')));
     addFcn(genpath(fullfile(prjDir,'TestScripts')));
-    disp('project files added to path.');
+    %disp('project files added to path.');
     
     cfg = Simulink.fileGenControl('getConfig');
     
@@ -26,5 +26,5 @@ function projectstartup
     cfg.CacheFolder = buildDir;
     cfg.CodeGenFolder = buildDir;
     Simulink.fileGenControl('setConfig', 'config', cfg, 'createDir', true);
-    disp('set build directory.');
+    %disp('set build directory.');
 end

@@ -2,7 +2,8 @@ function [costMap,maxSlope] = exampleHelperDem2mapLayers(dem,maxInclineAngle,res
 %exampleHelperDem2mapLayers Converts DEM data to a multiLayerMap storing cost,
 %gradients, and obstacles based on the slope limit
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         dem (:,:) double {mustBeNumeric}
@@ -11,7 +12,7 @@ function [costMap,maxSlope] = exampleHelperDem2mapLayers(dem,maxInclineAngle,res
     end
     % Discretize and Store Environment Information in Map Layers
 
-    % Query and store the Z-height
+    % Compute gradients and costs based on DEM slope
     zLayer = mapLayer(dem,LayerName="Z",Resolution=res);
     [gx,gy] = gradient(dem);
     

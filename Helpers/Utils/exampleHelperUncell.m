@@ -13,7 +13,8 @@ function varargout = exampleHelperUncell(in)
 %           % val = someFcn(10){:};                 % Does not work
 %       val = uncell(someFcn(10))                   % Works
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         in (:,:) {mustBeA(in,{'cell'})}

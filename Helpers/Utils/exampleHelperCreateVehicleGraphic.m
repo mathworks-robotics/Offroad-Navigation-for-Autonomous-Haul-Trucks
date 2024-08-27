@@ -1,7 +1,8 @@
 function [hTag, ccHandles] = exampleHelperCreateVehicleGraphic(ax,poseMode,checker)
 %exampleHelperCreateVehicleGraphic Creates hgtransform-wrapped inflationCollisionChecker
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         ax

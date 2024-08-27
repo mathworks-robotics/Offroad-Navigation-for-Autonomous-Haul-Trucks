@@ -1,7 +1,8 @@
 function hTform = exampleHelperVisualizeVehicle(curpose,length,width,hTform)
 %exampleHelperVisualizeVehicle Plot or update vehicle
 %
-% Copyright 2023 The MathWorks, Inc.
+
+% Copyright 2023-2024 The MathWorks, Inc.
 
     arguments
         curpose (1,3) double

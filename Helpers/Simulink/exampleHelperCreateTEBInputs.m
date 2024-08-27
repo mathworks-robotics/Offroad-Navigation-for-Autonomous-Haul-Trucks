@@ -6,10 +6,10 @@ load("OpenPitMinePart2Data.mat", "originalReferencePath", "smoothedReferencePath
 if  ~exist("teb_bus_info","var")
     teb_bus_info = Simulink.Bus.createObject(tuneableTEBParams);
     teb_bus = evalin('base', teb_bus_info.busName);
-    teb_bus.Elements(3).Name = 'CostWeights_T'; %<TODO> Remove after Simulink C++ bus issue is fixed
+    teb_bus.Elements(3).Name = 'CostWeights_T'; % Accommodates Simulink C++ bus requirement
 end
 
-%<TODO> Remove after Simulink C++ bus issue is fixed
+% Accommodates Simulink C++ bus requirement
 origNames = fieldnames(tuneableTEBParams);
 tuneableTEBParamsCpp = Simulink.Bus.createMATLABStruct('teb_bus');
 newNames = fieldnames(tuneableTEBParamsCpp);

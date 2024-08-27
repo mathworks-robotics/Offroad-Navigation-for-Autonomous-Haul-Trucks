@@ -1,7 +1,7 @@
 function planner = exampleHelperCreateTerrainPlanner(costMap,tuneableParams,fixedParams,transitionFcn)
 %exampleHelperCreateTerrainPlanner Creates plannerHybridAStar from incoming parameters and cost function
 %
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2024 The MathWorks, Inc.
 
     if nargin == 3
         % Create plannerHybridAStar with terrain-aware cost function
