@@ -16,7 +16,7 @@ function [length, width, turnRadius, maxFV, maxRV, maxW, maxLA] = exampleHelperM
     % max linear accel = (13.4 - 0)/(152/(13.4/2)) % [v2 - v1]/(d/avg(v)) ~ 0.6 m/s/s
     % [1] Yang, Guangchuan, Hao Xu, Zhongren Wang, and Zong Tian. “Truck Acceleration Behavior Study and Acceleration Lane Length Recommendations for Metered On-Ramps.” International Journal of Transportation Science and Technology 5, no. 2 (October 2016): 93–102. https://doi.org/10.1016/j.ijtst.2016.09.006.
     maxLA = round((13.4 - 0)/(152/(13.4/2)),1);
-
+    
     % Length of mining truck (in meters)
     length = 6.5;
 
@@ -24,7 +24,8 @@ function [length, width, turnRadius, maxFV, maxRV, maxW, maxLA] = exampleHelperM
     width = 5.76;
 
     % Minimum turning radius for the mining truck (meters)
-    turnRadius = 17.2;
+    % r = wheel base/tan(maxSteeringAngle) = 6.5/1
+    turnRadius = 6.5;
 
     % Maximum forward velocity (m/s)
     maxFV = 16;

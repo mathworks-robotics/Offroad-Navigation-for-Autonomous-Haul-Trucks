@@ -1,6 +1,8 @@
 classdef exampleHelperMapVisualizerSys < exampleHelperVisualizerBaseSys
 %exampleHelperMapVisualizerSys System object for visualizing maps in Simulink
 
+% Copyright 2023-2024 The MathWorks, Inc.
+
     % Public, tunable properties
     properties
         %Map Type
@@ -27,6 +29,7 @@ classdef exampleHelperMapVisualizerSys < exampleHelperVisualizerBaseSys
         function h = showImpl(obj)
             [mat,sz,res,loc] = deal(obj.VizProps{:});
             [~,h] = exampleHelperVisualizeMap(mat,res,loc,Ego=obj.IsEgo,GridSize=sz,Type=obj.MapType);
+            uistack(h,'bottom');
         end
     end
 end
