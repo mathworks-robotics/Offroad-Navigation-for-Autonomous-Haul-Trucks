@@ -18,4 +18,5 @@ function hTform = exampleHelperVisualizeVehicle(curpose,length,width,hTform)
         arrayfun(@(x)set(x,Parent=hTform),hVeh);
     end
     hTform.Matrix(1:3,:) = [eul2rotm([0 0 curpose(3)],'XYZ') [curpose(1:2)';0]];
+    uistack(hTform, 'top');
 end

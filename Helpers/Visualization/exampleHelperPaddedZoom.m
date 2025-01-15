@@ -8,7 +8,7 @@ function exampleHelperPaddedZoom(data,nDim,nv)
 % will be considered when computing bounds.
 %
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
     arguments
         data
@@ -34,8 +34,8 @@ function exampleHelperPaddedZoom(data,nDim,nv)
     end
 
     % Add padding
-    halfSize = (maxBounds-minBounds)/2;
     ctr = (maxBounds+minBounds)/2;
+    halfSize = [50 50];
     plotbounds = ctr+[-1;1]*halfSize*nv.PaddingFactor;
     xlim(plotbounds(:,1)');
     if nDim > 1

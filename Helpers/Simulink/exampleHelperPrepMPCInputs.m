@@ -11,9 +11,9 @@ nlobjTracking.Optimization.Solver = "fmincon";
 nlobjTracking.Ts = tsMPC;
 
 %% Vehicle Parameters
-% Use vehicle-parameters defined for our TEB controller
-[tuneableTEBParams,fixedTEBParams] = exampleHelperTEBParams;
-vWheelBase = fixedTEBParams.Length;
+% Use vehicle-parameters defined for controller
+[tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams;
+vWheelBase = fixedControllerParams.Length;
 
 %% Specify the prediction model and its analytical Jacobian in the controller object.
 
@@ -26,10 +26,10 @@ nlobjTracking.Model.ParameterLength = 1;
 % Here, MV(1) is the ego vehicle speed in m/s, and MV(2) is the steering angle in radians.
 
 nlobjTracking.UseMVRate = true;
-nlobjTracking.ManipulatedVariables(1).Min       = -tuneableTEBParams.MaxReverseVelocity;
-nlobjTracking.ManipulatedVariables(1).Max       =  tuneableTEBParams.MaxVelocity(1);
-nlobjTracking.ManipulatedVariables(1).RateMin   = -tuneableTEBParams.MaxAcceleration(1);
-nlobjTracking.ManipulatedVariables(1).RateMax   =  tuneableTEBParams.MaxAcceleration(1);
+nlobjTracking.ManipulatedVariables(1).Min       = -tuneableControllerParams.MaxReverseVelocity;
+nlobjTracking.ManipulatedVariables(1).Max       =  tuneableControllerParams.MaxVelocity(1);
+nlobjTracking.ManipulatedVariables(1).RateMin   = -tuneableControllerParams.MaxAcceleration(1);
+nlobjTracking.ManipulatedVariables(1).RateMax   =  tuneableControllerParams.MaxAcceleration(1);
 
 vNom = nlobjTracking.ManipulatedVariables(1).Max;
 ds = tsMPC*vNom;
@@ -37,10 +37,10 @@ nPt = 100;
 refPath = linspace(0,ds*nPt,nPt+1)'.*[1 0 0];
 
 % Set steer angle limits
-nlobjTracking.ManipulatedVariables(2).Min       = -tuneableTEBParams.MaxVelocity(2);
-nlobjTracking.ManipulatedVariables(2).Max       =  tuneableTEBParams.MaxVelocity(2);
-nlobjTracking.ManipulatedVariables(2).RateMin   = -tuneableTEBParams.MaxAcceleration(2);
-nlobjTracking.ManipulatedVariables(2).RateMax   =  tuneableTEBParams.MaxAcceleration(2);
+nlobjTracking.ManipulatedVariables(2).Min       = -tuneableControllerParams.MaxSteeringAngle;
+nlobjTracking.ManipulatedVariables(2).Max       =  tuneableControllerParams.MaxSteeringAngle;
+nlobjTracking.ManipulatedVariables(2).RateMin   = -tuneableControllerParams.MaxAcceleration(2);
+nlobjTracking.ManipulatedVariables(2).RateMax   =  tuneableControllerParams.MaxAcceleration(2);
 
 %% Define cost function and gradient.
 
@@ -73,3 +73,5 @@ mpcPathList_variable_bus = evalin('base',mpcPathList_variable_bus_info.busName);
 mpcPathList_variable_bus.Description = 'MPCPath_Variable';
 mpcPathList_variable_bus.Elements(1).DimensionsMode = "Variable";
 mpcPathList_variable_bus.Elements(1).Dimensions = [inf 3];
+
+% Copyright 2023-2025 The MathWorks, Inc.

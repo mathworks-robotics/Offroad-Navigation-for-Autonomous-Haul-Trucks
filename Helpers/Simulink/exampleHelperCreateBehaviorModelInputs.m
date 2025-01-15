@@ -1,10 +1,10 @@
 % Initialize route, teb, and free-space parameters
 exampleHelperCreateRoutePlannerInputs
-exampleHelperCreateTEBInputs
+exampleHelperCreateControllerInputs
 exampleHelperCreateFreeSpacePlannerInputs
 
 % Free up space around the road network
-vehDims = exampleHelperVehicleGeometry(fixedTEBParams.Length,fixedTEBParams.Width,"collisionChecker");
+vehDims = exampleHelperVehicleGeometry(fixedControllerParams.Length,fixedControllerParams.Width,"collisionChecker");
 collisionChecker = inflationCollisionChecker(vehDims,3);
 binMap = binaryOccupancyMap(~imSlope,Resolution=fixedTerrainAwareParams.Resolution);
 exampleHelperInflateRoadNetwork(binMap,pathList,collisionChecker.InflationRadius*1.5);
@@ -15,8 +15,8 @@ worldRes = binMap.Resolution;
 worldMat = binMap.occupancyMatrix;
 
 % Compute max distance traversible in an iteration of the local planner
-[tuneableTEBParams,fixedTEBParams] = exampleHelperTEBParams;
- maxDistance = (tuneableTEBParams.MaxVelocity(1)*tuneableTEBParams.LookaheadTime/binMap.Resolution);
+[tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams;
+ maxDistance = (tuneableControllerParams.MaxVelocity(1)*tuneableControllerParams.LookaheadTime/binMap.Resolution);
 
 % Create the ego-centric local map
 localMap = binaryOccupancyMap(2*maxDistance,2*maxDistance,binMap.Resolution);
@@ -36,4 +36,4 @@ vssCommProtocol = "SLSignals";
 % Clear "start" to not conflict with simulation command
 clear start;
 
-% Copyright 2023 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
