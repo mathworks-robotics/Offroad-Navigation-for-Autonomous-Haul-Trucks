@@ -1,6 +1,6 @@
 % Initialize route, teb, and free-space parameters
 exampleHelperCreateRoutePlannerInputs
-exampleHelperCreateTEBInputs
+exampleHelperCreateControllerInputs
 exampleHelperCreateFreeSpacePlannerInputs
 
 % Free up space around the road network
@@ -15,7 +15,7 @@ worldRes = binMap.Resolution;
 worldMat = binMap.occupancyMatrix;
 
 % Compute max distance traversible in an iteration of the local planner
-[tuneableControllerParams,fixedControllerParams] = exampleHelperTEBParams;
+[tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams;
  maxDistance = (tuneableControllerParams.MaxVelocity(1)*tuneableControllerParams.LookaheadTime/binMap.Resolution);
 
 % Create the ego-centric local map
@@ -36,4 +36,4 @@ vssCommProtocol = "SLSignals";
 % Clear "start" to not conflict with simulation command
 clear start;
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.

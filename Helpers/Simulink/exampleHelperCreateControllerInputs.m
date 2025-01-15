@@ -2,7 +2,7 @@
 load("OpenPitMinePart2Data.mat", "originalReferencePath", "smoothedReferencePath", "fixedTerrainAwareParams", "tuneableTerrainAwareParams");
 
 % Create tunable parameters and generate a Simulink Bus
-[tuneableControllerParams,fixedControllerParams] = exampleHelperTEBParams;
+[tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams;
 if  ~exist("controller_bus_info","var")
     controller_bus_info = Simulink.Bus.createObject(tuneableControllerParams);
     controller_bus = evalin('base', controller_bus_info.busName);
@@ -22,4 +22,4 @@ tsReplan = 3;
 tsIntegrator = 0.02;
 tsVisualize = 0.1;
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.

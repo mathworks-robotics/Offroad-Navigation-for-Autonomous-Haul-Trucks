@@ -1,14 +1,13 @@
-function [tuneableControllerParams,fixedControllerParams] = exampleHelperTEBParams
-%exampleHelperTEBParams Generate default values for a parameterized controllerTEB
-%
+function [tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams
+% exampleHelperControllerParams Generate default values for local planners.
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
     [length, width, turnRadius, maxFV, maxRV, maxW, maxLA] = exampleHelperMiningTruckSpecs;
     robotInfo = exampleHelperVehicleGeometry(length,width,"teb");
 
     tuneableControllerParams = struct();
-    tuneableControllerParams.LookaheadTime = 6; % sec
+    tuneableControllerParams.LookaheadTime = 4; % sec
     tuneableControllerParams.ObstacleSafetyMargin = 1;% meter
     tuneableControllerParams.CostWeights.Time = 100; 
     tuneableControllerParams.CostWeights.Smoothness = 500;
@@ -18,9 +17,9 @@ function [tuneableControllerParams,fixedControllerParams] = exampleHelperTEBPara
     tuneableControllerParams.MaxAcceleration = [maxLA 0.1]; % [meter/sec/sec rad/sec/sec]
     tuneableControllerParams.MaxReverseVelocity = maxRV; % meter/second
     tuneableControllerParams.MaxSteeringAngle = pi/4;
-    tuneableControllerParams.PathFollowingCost = 0.8;
-    tuneableControllerParams.PathAlignmentCost = 1.1;
-    tuneableControllerParams.NumTrajectory = 160;
+    tuneableControllerParams.PathFollowingCost = 1;
+    tuneableControllerParams.PathAlignmentCost = 1.3;
+    tuneableControllerParams.NumTrajectory = 300;
     tuneableControllerParams.ObstacleRepulsion = 200;
     tuneableControllerParams.StandardDeviation = [2 0.5];
 

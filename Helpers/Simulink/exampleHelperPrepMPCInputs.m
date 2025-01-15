@@ -12,7 +12,7 @@ nlobjTracking.Ts = tsMPC;
 
 %% Vehicle Parameters
 % Use vehicle-parameters defined for controller
-[tuneableControllerParams,fixedControllerParams] = exampleHelperTEBParams;
+[tuneableControllerParams,fixedControllerParams] = exampleHelperControllerParams;
 vWheelBase = fixedControllerParams.Length;
 
 %% Specify the prediction model and its analytical Jacobian in the controller object.
@@ -74,4 +74,4 @@ mpcPathList_variable_bus.Description = 'MPCPath_Variable';
 mpcPathList_variable_bus.Elements(1).DimensionsMode = "Variable";
 mpcPathList_variable_bus.Elements(1).Dimensions = [inf 3];
 
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.

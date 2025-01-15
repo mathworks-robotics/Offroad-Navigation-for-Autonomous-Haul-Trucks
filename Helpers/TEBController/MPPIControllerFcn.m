@@ -3,7 +3,7 @@ function [velcmds,optpath,sampleTime,needGlobalReplan,needLocalReplan,trajs,numT
 % MPPIControllerFcn return the optimal velocity commands using MPPI
 % controller
 
-% Copyright 2024 The MathWorks, Inc.
+% Copyright 2024-2025 The MathWorks, Inc.
     
     persistent mppiObj
     persistent mapObj
@@ -79,7 +79,7 @@ if constraintViolated == 1
     mppiObj.NumTrajectory = 2*controllerParams.NumTrajectory;
     stdDev = controllerParams.StandardDeviation;
     mppiObj.StandardDeviation = [stdDev(1) 2*stdDev(2)];
-    mppiObj.Parameter.CostWeight.PathFollowing = 0;
+    mppiObj.Parameter.CostWeight.PathFollowing = 0.1;
     numTrajs = mppiObj.NumTrajectory;
     % Generate optimal local path
     [velcmds,optpath,info] = mppiObj(curpose(:)',curvel(:)');
