@@ -8,10 +8,10 @@ function [velcmds,optpath,sampleTime,needGlobalReplan,needLocalReplan,trajs,numT
     persistent mppiObj
     persistent mapObj
     persistent vehicleObj;
-    persistent constraintViolated;
+    persistent numberOfViolations;
     
-    if isempty(constraintViolated)
-        constraintViolated = 0;
+    if isempty(numberOfViolations)
+        numberOfViolations = 0;
     end
     
     if isempty(mapObj)
@@ -30,10 +30,15 @@ function [velcmds,optpath,sampleTime,needGlobalReplan,needLocalReplan,trajs,numT
         mppiObj.ReferencePath = refPathXY;
     end
    
-    [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan] = stepImp(mppiObj, controllerParams, constraintViolated,curpose,curvel);
+    [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImp(mppiObj, controllerParams, numberOfViolations,curpose,curvel);
     sampleTime = mppiObj.SampleTime;
     trajs = info.Trajectories;   
     lookaheadPoses = info.LookaheadPoses;
+    if resetNumViolations
+        numberOfViolations = 0;
+    else       
+        numberOfViolations = numberOfViolations + 1;
+    end
 end
 
 
@@ -65,13 +70,13 @@ mppi.Parameter.CostWeight.ObstacleRepulsion = mppiParameters.ObstacleRepulsion;
 mppi.Parameter.VehicleCollisionInformation = struct("Dimension",[length, width],"Shape","Rectangle");
 end
 
-function [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan] = stepImp(mppiObj, controllerParams, constraintViolated,curpose,curvel)
+function [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImp(mppiObj, controllerParams, numberOfViolations,curpose,curvel)
 % stepImp return the control commands from the MPPI controller.
 
 needLocalReplan = 0;
 needGlobalReplan = 0;
-
-if constraintViolated == 1
+resetNumViolations = true;
+if numberOfViolations > 0
     % When constraints are violated in previous MPPI output, relax the
     % parameters in MPPI temporarily. The number of trajectories are doubled
     % increase the standard deviation, and keep the PathFollowing cost
@@ -79,24 +84,30 @@ if constraintViolated == 1
     mppiObj.NumTrajectory = 2*controllerParams.NumTrajectory;
     stdDev = controllerParams.StandardDeviation;
     mppiObj.StandardDeviation = [stdDev(1) 2*stdDev(2)];
-    mppiObj.Parameter.CostWeight.PathFollowing = 0.1;
+    mppiObj.Parameter.CostWeight.PathAlignment = 0;
     numTrajs = mppiObj.NumTrajectory;
     % Generate optimal local path
     [velcmds,optpath,info] = mppiObj(curpose(:)',curvel(:)');
     mppiObj.NumTrajectory = controllerParams.NumTrajectory;
     mppiObj.StandardDeviation = stdDev;
-    mppiObj.Parameter.CostWeight.PathFollowing = controllerParams.PathFollowingCost;   
+    mppiObj.Parameter.CostWeight.PathAlignment = controllerParams.PathAlignmentCost;    
 else
     [velcmds,optpath,info] = mppiObj(curpose(:)',curvel(:)');
     numTrajs = mppiObj.NumTrajectory;
 end
 
-% Trigger local replan if the mppi output trajectory has constraints violated. 
 if info.ExitFlag == 1
-    needLocalReplan = 1;
-% Trigger global replan if the vehicle is far from reference path or it did
-% not move using previous controls. 
+    if numberOfViolations == 0
+        % Trigger local replan if the mppi output trajectory has constraints 
+        % violated and previous mppi call did not result in violation.      
+        needLocalReplan = 1;
+        resetNumViolations = false; 
+    elseif numberOfViolations >= 1
+        % Trigger global replan if constraint violation occured on consecutive MPPI calls 
+        needGlobalReplan = 1;
+    end
 elseif info.ExitFlag == 2
+    % Trigger global replan if the vehicle is far from reference path.
     needGlobalReplan = 1;
 end
 
