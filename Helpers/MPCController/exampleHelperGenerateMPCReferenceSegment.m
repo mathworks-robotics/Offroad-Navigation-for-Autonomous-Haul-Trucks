@@ -20,16 +20,31 @@ function [stageParam,ii] = exampleHelperGenerateMPCReferenceSegment(curPose, ref
     % Find the closes point on the reference path to the current position
     [~, ii] = min(vecnorm(path-pos,2,2));
 
-    % Find the next 10 points on the path, make sure we don't run over the
-    % end of the path    
-    for jj=1:length(ind)
-        ind(jj) = min(ii+(jj-1), size(refPath,1));
+    remainingPath = refPath(ii:end,:);
+    numStates = size(remainingPath,1);
+    refEndPose = refPath(end,:);
+    dist = vecnorm(curPose(1:2)-refEndPose(1:2),2,2);
+    if numStates < predictionHorizon 
+        if numStates >= 2 && dist > 2
+            % Interpolate evenly between curPose and end pose at reference
+            % path to have predictionHorizon number of states for MPC.
+            xBounds = [min(remainingPath(:,1))-10, max(remainingPath(:,1))+10];
+            yBounds = [min(remainingPath(:,2))-10, max(remainingPath(:,2))+10];
+            ss = stateSpaceSE2([xBounds;yBounds;[-pi pi]]);
+            pathObj = navPath(ss, remainingPath);
+            interpolate(pathObj, 10);
+            refPathToMPC = pathObj.States;      
+        else
+            refPathToMPC = repmat(refEndPose,predictionHorizon,1);
+        end
+    else
+        refPathToMPC = remainingPath(1:predictionHorizon,:);
     end
-
+    
     % Assemble trajectory. In the first stage, the trajectory is not part of the cost function, therefore we set the first row to zero.
     trajectory = [ zeros(1,3);
                    curPose(:)';
-                   refPath(ind(2:end),:)
+                   refPathToMPC(2:end,:)
                  ];
     % MPC needs a smooth pose angle trajectory. If the pose angle is
     % wrapping around e.g. 2pi, we need to catch it and fix it to avoid the discontinuity.
