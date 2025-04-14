@@ -36,4 +36,9 @@ vssCommProtocol = "SLSignals";
 % Clear "start" to not conflict with simulation command
 clear start;
 
+% Create a bus to store local planner and controller output status
+pathStatus = struct('needLocalReplan',false,'needGlobalReplan',false,'goalReached',false);
+pathStatusBusInfo = Simulink.Bus.createObject(pathStatus);
+pathStatusBus = evalin('base',pathStatusBusInfo.busName);
+
 % Copyright 2023-2025 The MathWorks, Inc.

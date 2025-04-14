@@ -30,7 +30,7 @@ function [velcmds,optpath,sampleTime,needGlobalReplan,needLocalReplan,trajs,numT
         mppiObj.ReferencePath = refPathXY;
     end
    
-    [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImp(mppiObj, controllerParams, numberOfViolations,curpose,curvel);
+    [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImpl(mppiObj, controllerParams, numberOfViolations,curpose,curvel);
     sampleTime = mppiObj.SampleTime;
     trajs = info.Trajectories;   
     lookaheadPoses = info.LookaheadPoses;
@@ -70,11 +70,11 @@ mppi.Parameter.CostWeight.ObstacleRepulsion = mppiParameters.ObstacleRepulsion;
 mppi.Parameter.VehicleCollisionInformation = struct("Dimension",[length, width],"Shape","Rectangle");
 end
 
-function [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImp(mppiObj, controllerParams, numberOfViolations,curpose,curvel)
+function [velcmds,optpath,info,numTrajs,needLocalReplan,needGlobalReplan,resetNumViolations] = stepImpl(mppiObj, controllerParams, numberOfViolations,curpose,curvel)
 % stepImp return the control commands from the MPPI controller.
 
-needLocalReplan = 0;
-needGlobalReplan = 0;
+needLocalReplan = false;
+needGlobalReplan = false;
 resetNumViolations = true;
 if numberOfViolations > 0
     % When constraints are violated in previous MPPI output, relax the
@@ -100,15 +100,15 @@ if info.ExitFlag == 1
     if numberOfViolations == 0
         % Trigger local replan if the mppi output trajectory has constraints 
         % violated and previous mppi call did not result in violation.      
-        needLocalReplan = 1;
+        needLocalReplan = true;
         resetNumViolations = false; 
     elseif numberOfViolations >= 1
         % Trigger global replan if constraint violation occured on consecutive MPPI calls 
-        needGlobalReplan = 1;
+        needGlobalReplan = true;
     end
 elseif info.ExitFlag == 2
     % Trigger global replan if the vehicle is far from reference path.
-    needGlobalReplan = 1;
+    needGlobalReplan = true;
 end
 
 end
